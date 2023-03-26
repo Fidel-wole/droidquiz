@@ -1,8 +1,9 @@
 <?php
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
-
+use App\Http\Controllers\QuestionsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,22 +19,30 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/signup', function () {
-    return view('signup');
-});
-Route::post('/signup', [SignupController::class, "register"]);
-Route::post('/login', [SignupController::class, "check"]);
-Route::get('/userdashboard', function(){
-    return view('userdashboard');
-});
-Route::get('/userdashboard', [SignupController::class, "dashboard"]);
-Route::get('/navbar', function(){
-    return view('navbar');
-});
-Route::get('/header', function(){
-    return view('header');
-});
-?>
+Route::get('/login2', function () {
+    return view('login2');});
+Route::get('/signup2', function () {
+    return view('signup2');}); 
+    Route::post('/signup2', [SignupController::class, 'register']);
+    Route::post('/login2', [SignupController::class, 'login']);
+    Route::post('/logout', [SignupController::class, 'logout']);
+    Route::get('/createQuiz', function () {
+        return view('createQuiz');
+    });
+Route::get('/userdashboard', [SignupController::class, 'dashboard'])->middleware('auth');
+// Route::get('/art/{post}', [QuestionsController::class, 'showQuiz']);
+Route::get('/art', [QuestionsController::class, 'question']);
+Route::post('/quiz', [QuestionsController::class, 'create']);
+Route::post('/art', [QuestionsController::class, 'mark']);
+Route::get('/categories', [SignupController::class, 'category']);
+Route::get('/profile/{profile:Username}', [UserController::class, 'profile']);
+Route::get('/analytics', [UserController::class, 'analysis']);
+
+ 
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+
+require __DIR__.'/auth.php';

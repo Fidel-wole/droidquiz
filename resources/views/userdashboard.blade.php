@@ -11,53 +11,17 @@
 </head>
 <body>
   <div class="container">
-    <aside>
-      <div class="top">
-        <div class="logo">
-          <h2>Quiz<span>Grad</span></h2>
-        </div>
-        <div class="close" id="close-btn">
-            <span class="material-icons-sharp">close</span>
-         </div>
-      </div>
-      <div class="sidebar">
-        <a href="" class="active">
-          <span class="material-icons-sharp">grid_view</span>
-          <h3>Dashboard</h3>
-        </a>
-        <a href="">
-          <span class="material-icons-sharp">insights</span>
-          <h3>Analytics</h3>
-        </a>
-        <a href="">
-          <span class="material-icons-sharp">mail_outline</span>
-          <h3>Messages</h3>
-          <span class="message-count">20</span>
-        </a>
-        <a href="">
-          <span class="material-icons-sharp">person</span>
-          <h3>Take test</h3>
-        </a>
-        <a href="">
-          <span class="material-icons-sharp">edit_note</span>
-          <h3>Create Quiz</h3>
-        </a>
-        <a href="">
-          <span class="material-icons-sharp">settings</span>
-          <h3>Settings</h3>
-        </a>
-        <a href="">
-          <span class="material-icons-sharp">logout</span>
-          <h3>Log-out</h3>
-        </a>
-      </div>
-    </aside>
+    @auth
+   @include("navbar")
     <!--------------------------END OF ASIDE---------->
+
+    <!-------------------------MAIN START----------------->
     <main>
       <h1>Dashboard</h1>
 
       <div class="date">
-        <input type="date">
+        <p>Current Day</p>
+        <input type="text" id="date" value="" readonly>
       </div>
 
       <div class="insights">
@@ -119,27 +83,95 @@
         </div>
         <!--------------END OF TIME SPENT----------->
       </div>
+      <div class="category">
+        <h3>Categories</h3>
+        <div class="quiz">
+          <div class="quiz-photo">
+            <a href="/art">
+            <span class="material-icons-sharp">grass</span>
+            <p>Art</p>
+          </a>
+          </div>
+          <div class="quiz-science">
+            <a href="">
+            <span class="material-icons-sharp">science</span>
+            <p>Science</p>
+            </a>
+          </div>
+          <div class="quiz-commercial">
+            <a href="">
+            <span class="material-icons-sharp">language</span>
+            <p>Commercial</p>
+            </a>
+          </div>
+          <div class="quiz-music">
+            <a href="">
+            <span class="material-icons-sharp">album</span>
+            <p>Music</p>
+            </a>
+          </div>
+          
+          <div class="quiz-photo">
+            <a href="">
+            <span class="material-icons-sharp">psychology</span>
+            <p>General Knowledge</p>
+          </a>
+          </div>
+      
+        </div>
+      </div>
+      <div class="lessons">
+        <h3>Popular Lessons</h3>
+        <div class="card">
+          <a href="">
+            <div class="lesson-content">
+              <div class="lesson-img">
+                <img src="images/5224588.jpg">
+              </div>
+              <div class="lesson-info">
+                <p><b>Science Technology</b></p>
+                <p>By Eliab Ilemobayo</p>
+              </div>
+             
+            </div>
+            </a>
+        <a href="">
+          <div class="lesson-content">
+            <div class="lesson-img">
+              <img src="images/5224588.jpg">
+            </div>
+            <div class="lesson-info">
+              <p><b>Science Technology</b></p>
+              <p>By Eliab Ilemobayo</p>
+            </div>
+           
+          </div>
+          </a>
+        <a href="">
+        <div class="lesson-content">
+          <div class="lesson-img">
+            <img src="images/5224588.jpg">
+          </div>
+          <div class="lesson-info">
+            <p><b>Science Technology</b></p>
+            <p>By Eliab Ilemobayo</p>
+          </div>
+         
+        </div>
+        </a>
+        <div class="show">
+          <div>
+          <span class="material-icons-sharp">arrow_circle_right</span>
+          <p>More</p>
+          </div> 
+        </div>
+        </div>
+      </div>
     </main>
 <!------END OF MAIN SECTION------------------>
+<!-------------------RIGHT SECTION START----------------->
 <div class="right">
-  <div class="top">
-    <button id="menu-btn">
-      <span class="material-icons-sharp">menu</span>
-    </button>
-    <div class="theme-toggle">
-      <span class="material-icons-sharp active">light_mode</span>
-      <span class="material-icons-sharp">dark_mode</span>
-    </div>
-    <div class="profile">
-      <div class="info">
-        <p>Hey,<b>{{$LoggedUserInfo['Username']}}</b></p>
-        <small class="text-muted">User</small>
-      </div>
-      <div class="profile-photo">
-        <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
-      </div>
-    </div>
-  </div>
+@include('/header')
   <!-----------END OF TOP---------------->
   <div class="recent-updates">
     <h2>Recents Updates</h2>
@@ -173,8 +205,44 @@
       </div>
     </div>
   </div>
-</div>
+  <div class="recent-updates">
+    <h2>Top Rank of the week</h2>
+    <div class="updates">
+      <div class="update">
+        <div class="profile-photo">
+          <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+        </div>
+        <div class="message">
+          <p><b>Eliab Zoe</b></p>
+          <p>124 points</p>
+        </div>
+      </div>
+      <div class="update">
+        <div class="profile-photo">
+          <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+        </div>
+        <div class="message">
+          <p><b>Williams Odunayo</b></p>
+          <p>120 points</p>
+        </div>
+      </div>
+      <div class="update">
+        <div class="profile-photo">
+          <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+        </div>
+        <div class="message">
+          <p><b>Pery Tylon</b></p>
+          <p>114 points</p>
+        </div>
+     
+
+      </div>
+    </div>
   </div>
+</div>
+@endauth
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

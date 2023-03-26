@@ -1,20 +1,26 @@
 *{
     margin: 0;
     padding: 0;
+    outline: 0;
+    list-style: none;
     box-sizing: border-box;
+    text-decoration: none;
 }
 body{
+    background-color: #f6f6f9;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 73px;
-    max-height: 100vh;
+    min-height: 100vh;
+    user-select: none;
+    overflow-x: hidden;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 @media  (max-width:750px) {
     body{
         padding: 0px;
-        margin: 0;
+        margin: 1rem;
     }
 }
 .body{
@@ -155,7 +161,7 @@ visibility: hidden;
     }
 }
 button{
-    padding: 10px;
+    padding: 7px;
     background-color:blue;
     color: white;
     border: none;
@@ -197,41 +203,87 @@ button{
         width: 20%;
     }
 }
- .input{
-    width: 40%;
-    padding-top: 20px;
-    padding-left: 20px;
- }
- @media screen and (max-width:750px){
-    .input{
-        width:10%;
-    }
- }
- .input input{
-    outline: none;
-    padding: 10px;
-    width: 370px;
-    border-left: 4px solid blue;
- }
- .form p{
-    border: none;
-    font-size: 20px;
- }
- form{
-    text-align: center;
- }
- .remember{
-    margin-top: 10px;
+form{
+    box-shadow:0 2rem 3rem rgba(132, 139, 200, 0.18);
+    padding: 33px;
+    border-radius: 0.8rem;
     display: flex;
-    justify-content: space-between;
- }
- .login{
-    width: 30%;
-    height: 30%;
- }
- @media screen and (max-width:750px) {
-    .login{
-        width: 50%;
-        height: 50%;
+    gap: 10rem;
+    background-color: rgb(248, 242, 242);
+}
+form .form-fill .info h2{
+    margin-bottom: 10px;
+    font-size: 3rem;
+}
+form .form-fill .info h2 span{
+    color: blue;
+}
+form .form-fill .info{
+    text-align: center;
+    margin-bottom: 20px;
+} 
+form .form-fill .input-group{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+form .form-fill .input-group input{
+    padding: 10px;
+    border-radius: 10px;
+    border-color: aquamarine;
+
+}
+form .form-fill .input-group .check{
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    gap:2rem;
+    color: blue;
+    font-weight: lighter;
+}
+form .form-fill .input-group .button{
+    display: flex;
+    gap:6rem;
+}
+form .form-fill .input-group button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+form .form-fill .input-group .button a{
+    font-weight: lighter;
+    padding: 10px;
+    margin-top: 0.6rem;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: 0 2rem 3rem rgba(132, 139, 200, 0.18);
+}
+.pageimg{
+    width: 200px;
+    height: 350px;
+}
+.pageimg img{
+    width: 100%;
+    height: 100%;
+}
+.input-group span{
+    color: red;
+    font-size: 12px;
+}
+@media screen and (max-width:750px) {
+    body{
+        padding: 0;
     }
- }
+    form .input-group span{
+      margin-bottom: 1rem;
+    }
+    form .input-group .check{
+    flex-direction: column;
+    }
+    form .form-fill .input-group .button a{
+        margin-left: 7rem;
+    }
+    .pageimg{
+        display: none;
+    }
+
+}

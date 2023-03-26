@@ -15,7 +15,7 @@
     <a href="">How it works</a>
     <a href="">Features</a>
     <a href="">About us</a>
-    <a href="login" id="log">Log in</a>
+    <a href="login2" id="log">Log in</a>
     </div>
     <p onclick="open()" id="open">&#9776;</p>
    </header>
@@ -35,7 +35,7 @@
         <h1>Learn</h1>
         <h1>new concepts</h1>
         <p>We will help you prepare for exams and quizes</p>
-        <form action="login">
+        <form action="login2">
         <button>Start solving</button>
     </form>
     </div>
