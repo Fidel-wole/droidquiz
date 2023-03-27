@@ -13,7 +13,7 @@
             <span class="material-icons-sharp">grid_view</span>
             <h3>Dashboard</h3>
           </a>
-          <a href="/analytics">
+          <a href="/analytics/{{auth()->user()->Username}}">
             <span class="material-icons-sharp">insights</span>
             <h3>Analytics</h3>
           </a>
@@ -39,7 +39,7 @@
             <h3>Settings</h3>
           </a>
           <a>
-          <form action="logout" method="post">
+          <form action="/logout" method="post">
             @csrf
             <span class="material-icons-sharp">logout</span>
             <button>Log-out</button>

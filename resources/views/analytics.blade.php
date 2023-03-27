@@ -54,41 +54,24 @@
       <div class="my-quizes">
         <div class="head" style="display:flex; gap:0.5rem;">
             <h2>My Quizes</h2>
+            <span class="message-count">{{$quizCount}}</span>
             <input type="search" placeholder="Search">
         </div>
         <div class="quizes">
+          @foreach($quiz as $quiz)
             <div class="quiz-con">
-                <div class="quiz-img">
-                    <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+                <div class="">
+                    <img src="/images/character-avatar-3d-illustration_460336-702.jpg" alt="">
                 </div>
-                <h3>Animal planet</h3>
+                
+                <h3>{{$quiz->subject}}</h3>
+                <p>{{$quiz->topic}}
                 <p>92 Questions</p>
                 <span><ul><p>20 per game</p></ul></span>
+               
             </div>
-            <div class="quiz-con">
-                <div class="quiz-img">
-                    <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
-                </div>
-                <h3>Animal planet</h3>
-                <p>92 Questions</p>
-                <span><ul><p>20 per game</p></ul></span>
-            </div>
-            <div class="quiz-con">
-                <div class="quiz-img">
-                    <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
-                </div>
-                <h3>Animal planet</h3>
-                <p>92 Questions</p>
-                <span><ul><p>20 per game</p></ul></span>
-            </div>
-            <div class="quiz-con">
-                <div class="quiz-img">
-                    <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
-                </div>
-                <h3>Animal planet</h3>
-                <p>92 Questions</p>
-                <span><ul><p>20 per game</p></ul></span>
-            </div>
+            @endforeach
+           
         </div>
       </div>
   <div class="summary grid-flow"
@@ -161,7 +144,7 @@ data-spacing="large">
               </div>
               <div class="update">
                 <div class="profile-photo">
-                  <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+                  <img src="/images/character-avatar-3d-illustration_460336-702.jpg" alt="">
                 </div>
                 <div class="message">
                   <p><b>Williams Odunayo</b> challenged you to a quiz</p>
@@ -170,7 +153,7 @@ data-spacing="large">
               </div>
               <div class="update">
                 <div class="profile-photo">
-                  <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+                  <img src="/images/character-avatar-3d-illustration_460336-702.jpg" alt="">
                 </div>
                 <div class="message">
                   <p><b>Pery Tylon</b> challenged you to a quiz</p>
@@ -184,7 +167,7 @@ data-spacing="large">
             <div class="updates">
               <div class="update">
                 <div class="profile-photo">
-                  <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+                  <img src="/images/character-avatar-3d-illustration_460336-702.jpg" alt="">
                 </div>
                 <div class="message">
                   <p><b>Eliab Zoe</b> challenged you to a quiz</p>
@@ -193,7 +176,7 @@ data-spacing="large">
               </div>
               <div class="update">
                 <div class="profile-photo">
-                  <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+                  <img src="/images/character-avatar-3d-illustration_460336-702.jpg" alt="">
                 </div>
                 <div class="message">
                   <p><b>Williams Odunayo</b> challenged you to a quiz</p>
@@ -202,7 +185,7 @@ data-spacing="large">
               </div>
               <div class="update">
                 <div class="profile-photo">
-                  <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+                  <img src="/images/character-avatar-3d-illustration_460336-702.jpg" alt="">
                 </div>
                 <div class="message">
                   <p><b>Pery Tylon</b> challenged you to a quiz</p>

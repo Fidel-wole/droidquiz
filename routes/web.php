@@ -36,8 +36,8 @@ Route::post('/quiz', [QuestionsController::class, 'create']);
 Route::post('/art', [QuestionsController::class, 'mark']);
 Route::get('/categories', [SignupController::class, 'category']);
 Route::get('/profile/{profile:Username}', [UserController::class, 'profile']);
-Route::get('/analytics', [UserController::class, 'analysis']);
-
+Route::get('/analytics/{quizs:Username}', [UserController::class, 'analysis']);
+Route::get('/analytics', [UserController::class, 'quiz']);
  
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
