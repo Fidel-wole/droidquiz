@@ -44,6 +44,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public function profile(){
-        return $this->hasMany(Questions::class, 'user_id');
+        return $this->hasMany(quiz_topics::class, 'user_id');
     }
 }

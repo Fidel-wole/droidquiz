@@ -912,5 +912,57 @@ border-radius: var(--border-radius-1);
         width: 5rem;
         height: 5rem;
     }
+    main .my-quizes .head h2{
+        font-size: 16px;
+        margin-top: 0.5rem;
+    }
    
   }
+
+  /*========================================= CATEGORY STYLE============================= */
+  main .topImage{
+    position: relative;
+    border-radius: var(--card-border-radius);
+}
+main .topImage img{
+    border-radius: var(--card-border-radius);
+}
+main .topImage .text{
+    position: absolute;
+    top:5rem;
+    left: 3rem;
+    color: var(--white-color);
+}
+main .subjects{
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: auto auto auto
+     ;
+     gap: 1rem;
+}
+
+main .subject{
+background-color: var(--color-light);
+border-radius: var(--border-radius-1);
+padding-left: 0.7rem;
+box-shadow: var(--box-shadow);
+}
+@media screen and (max-width:750px) {
+    main .topImage{
+        margin-top: -2rem;
+      
+    }
+    main .topImage .text{
+        left: 1rem;
+    }
+    main .topImage .text h1{
+        font-size: 16px;
+        color: white;
+    }
+    main .subjects{
+        grid-template-columns: auto auto;
+    }
+    main .subject h2, li{
+        font-size: 12px;
+    }
+}

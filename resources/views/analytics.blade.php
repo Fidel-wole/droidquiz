@@ -65,7 +65,8 @@
                 </div>
                 
                 <h3>{{$quiz->subject}}</h3>
-                <p>{{$quiz->topic}}
+                <p>{{$quiz->topic}}</p>
+                
                 <p>92 Questions</p>
                 <span><ul><p>20 per game</p></ul></span>
                

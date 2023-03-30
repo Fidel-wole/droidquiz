@@ -27,7 +27,7 @@
         <small class="text-muted">User</small>
       </div>
       <div class="profile-photo">
-        <img src="{{asset('/storage/image/'.auth()->user()->Avatar)}}">
+        <img src="{{auth()->user()->Avatar ? asset('/storage/image/'.auth()->user()->Avatar) : ('imsges/funny-3d-illustration-american-referee.jpg')}}">
       </div>
     </div>
   </div>

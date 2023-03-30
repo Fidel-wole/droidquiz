@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+    <link href="/https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
       rel="stylesheet">
-  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="/dashboard.css">
     <title>Document</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
         @include('navbar')
         <main>
             <div class="create">
-                <form action="quiz" method="post">
+                <form action="/quiz/{{$quizid}}" method="post">
                     @csrf
                     <h2>Create your own quiz</h2>
                     @if(Session::get('sucess'))
@@ -31,30 +31,7 @@
                         <input type ="text" name="topic" placeholder="Topic">
                         <span>@error('subject'){{$message}}@enderror
                      </div>
-                     <div class="input-group">
-                        <textarea name="questions" id="" cols="30" rows="10">Question</textarea>
-                        <span>@error('subject'){{$message}}@enderror
-                     </div>
-                     <div class="input-group">
-                        <input type ="text" name="option_a" placeholder="Input Option A">
-                        <span>@error('subject'){{$message}}@enderror
-                     </div>
-                     <div class="input-group">
-                        <input type ="text" name="option_b" placeholder="Input Option B">
-                        <span>@error('subject'){{$message}}@enderror
-                     </div>
-                     <div class="input-group">
-                        <input type ="text" name="option_c" placeholder="Input Option C">
-                        <span>@error('subject'){{$message}}@enderror
-                     </div>
-                     <div class="input-group">
-                        <input type ="text" name="option_d" placeholder="Input Option D">
-                        <span>@error('subject'){{$message}}@enderror
-                     </div>
-                     <div class="input-group">
-                        <textarea name="answer" id="" cols="30" rows="10">Answer</textarea>
-                        <span>@error('subject'){{$message}}@enderror
-                     </div>
+                     
                   <button>Submit</button>
                 </form>
             </div>

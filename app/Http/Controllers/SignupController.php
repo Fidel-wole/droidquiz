@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Quiz_category;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +14,7 @@ class SignupController extends Controller
     auth()->logout();
  }
    public function dashboard(){
-       return view('userdashboard');
+       return view('/userdashboard', ['category'=>Quiz_category::all()]);
     }
   public function login(Request $request){
 $incomingFields = $request->validate([
@@ -34,8 +35,8 @@ return redirect('/userdashboard');
                 'email'=>['required', 'email', Rule::unique('users', 'email')],
                 'Username'=>'required',
                 'Password'=>'required|min:8|max:12',
-                'avatar' =>'required'
             ]);
+            $avatar_name = 'avatar.jpg';
             $incomingFields['password'] = bcrypt($incomingFields['Password']);
             if($request->hasFile('avatar')){
               $destination_path = 'public/image';
@@ -43,6 +44,7 @@ return redirect('/userdashboard');
               $avatar_name = $avatar->getClientOriginalName();
               $path = $request->file('avatar')->storeAs($destination_path, $avatar_name);
             }
+ 
             $incomingFields['Avatar'] = $avatar_name;
           $user  = User::create($incomingFields);
             auth()->login($user);
@@ -81,8 +83,6 @@ return redirect('/userdashboard');
 
 
     }
-    public function category(){
-      return view('categories');
-   }
+    
 }
 ?>

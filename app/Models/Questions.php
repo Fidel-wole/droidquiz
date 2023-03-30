@@ -10,7 +10,7 @@ class Questions extends Model
     use HasFactory;
     protected $fillable = [
         'subject',
-        'topic',
+        'topics',
         'questions',
         'option_a',
         'option_b',
@@ -20,9 +20,7 @@ class Questions extends Model
         'user_id'
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class, 'user_id');
-    }
+   
     protected $table = 'questions';
    
 }

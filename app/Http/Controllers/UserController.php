@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Questions;
 use App\Models\User;
+use App\Models\Quiz_topics;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +14,7 @@ class UserController extends Controller
     }
     public function analysis(User $quizs){
         return view('/analytics', ['quizCount' => $quizs->profile()->count(),
-        'quiz'=>Questions::where('user_id', auth()->user()->id)->get()]
+        'quiz'=>Quiz_topics::where('user_id', auth()->user()->id)->get()]
     );
     }
 

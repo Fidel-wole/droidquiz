@@ -86,13 +86,19 @@
       <div class="category">
         <h3>Categories</h3>
         <div class="quiz">
+          @foreach ($category as $item)
           <div class="quiz-photo">
-            <a href="/art">
+           
+            <a href="/category/{{$item->id}}">
+         
+           
             <span class="material-icons-sharp">grass</span>
-            <p>Art</p>
+            <p>{{$item->categories}}</p>
           </a>
+          
           </div>
-          <div class="quiz-science">
+          @endforeach
+          {{-- <div class="quiz-science">
             <a href="">
             <span class="material-icons-sharp">science</span>
             <p>Science</p>
@@ -116,7 +122,7 @@
             <span class="material-icons-sharp">psychology</span>
             <p>General Knowledge</p>
           </a>
-          </div>
+          </div> --}}
       
         </div>
       </div>
@@ -178,7 +184,7 @@
     <div class="updates">
       <div class="update">
         <div class="profile-photo">
-          <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+          <img src="images/cartoon3.jpg" alt="">
         </div>
         <div class="message">
           <p><b>Eliab Zoe</b> challenged you to a quiz</p>
@@ -187,7 +193,7 @@
       </div>
       <div class="update">
         <div class="profile-photo">
-          <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+          <img src="images/catoon1.jpg" alt="">
         </div>
         <div class="message">
           <p><b>Williams Odunayo</b> challenged you to a quiz</p>
@@ -196,7 +202,7 @@
       </div>
       <div class="update">
         <div class="profile-photo">
-          <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+          <img src="images/cartoon2.jpg"" alt="">
         </div>
         <div class="message">
           <p><b>Pery Tylon</b> challenged you to a quiz</p>
@@ -210,7 +216,7 @@
     <div class="updates">
       <div class="update">
         <div class="profile-photo">
-          <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+          <img src="images/cartoon7.jpg" alt="">
         </div>
         <div class="message">
           <p><b>Eliab Zoe</b></p>
@@ -219,7 +225,7 @@
       </div>
       <div class="update">
         <div class="profile-photo">
-          <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+          <img src="images/cartoon5.jpg" alt="">
         </div>
         <div class="message">
           <p><b>Williams Odunayo</b></p>
@@ -228,7 +234,7 @@
       </div>
       <div class="update">
         <div class="profile-photo">
-          <img src="images/character-avatar-3d-illustration_460336-702.jpg" alt="">
+          <img src="images/cartoon6.jpg" alt="">
         </div>
         <div class="message">
           <p><b>Pery Tylon</b></p>
