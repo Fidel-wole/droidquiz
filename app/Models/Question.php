@@ -5,22 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Questions extends Model
+class Question extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'subject',
-        'topics',
         'questions',
         'option_a',
         'option_b',
         'option_c',
         'option_d',
         'answer',
-        'user_id'
+        'subjectId',
+    
     ];
-
-   
-    protected $table = 'questions';
-   
+    public function category(){
+        return $this->belongsTo(Quiz_topics::class, 'subjectId');
+    }
 }

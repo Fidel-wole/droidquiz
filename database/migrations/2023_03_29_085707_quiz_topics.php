@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('quiz_categories');
-            $table->string('subjectId');
+            $table->bigInteger('subjectId')->unique();
             $table->timestamps();
         });
     }

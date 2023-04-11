@@ -24,7 +24,7 @@
     <div class="subjects">
         @foreach($category->topics as $cart)
         <div class="subject">
-    <a href="{{$cart->subjectId}}">
+    <a href="/viewquestions/{{$cart->id}}">
     <h2>{{$cart->subject}}</h2>
     <li>Topic: {{$cart->topics}}</li>
     <li>Duration: 10 minutes</li>

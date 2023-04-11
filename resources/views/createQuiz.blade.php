@@ -13,25 +13,20 @@
     <div class="container">
         @include('navbar')
         <main>
+          
             <div class="create">
+               
                 <form action="/quiz/{{$quizid}}" method="post">
                     @csrf
-                    <h2>Create your own quiz</h2>
-                    @if(Session::get('sucess'))
-            <div style="background-color:  rgb(17, 231, 160); width:90%; margin-bottom:20px;
-              font-weight:lighter;  padding:12px; color:white;">
-                {{Session::get('sucess')}}
-            </div>
-            @endif
+                   
                     <div class="input-group">
-                        <input type ="text" name="subject" placeholder="Subject">
-                        <span>@error('subject'){{$message}}@enderror
+                        <input type ="text" name="subject" placeholder="Subject"><br>
+                        <span style="color:red;">@error('subject'){{$message}}@enderror
                      </div>
                      <div class="input-group">
-                        <input type ="text" name="topic" placeholder="Topic">
-                        <span>@error('subject'){{$message}}@enderror
+                        <input type ="text" name="topic" placeholder="Topic"><br>
+                        <span style="color:red;"">@error('topic'){{$message}}@enderror
                      </div>
-                     
                   <button>Submit</button>
                 </form>
             </div>

@@ -234,7 +234,7 @@
       </div>
       <div class="update">
         <div class="profile-photo">
-          <img src="images/cartoon6.jpg" alt="">
+          <img src="images/cartoon6.png" alt="" >
         </div>
         <div class="message">
           <p><b>Pery Tylon</b></p>

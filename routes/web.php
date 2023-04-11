@@ -23,14 +23,15 @@ Route::get('/login2', function () {
     return view('login2');});
     Route::get('/resultSummary', function () {
         return view('/resultSummary');});
-Route::get('/signup2', function () {
+        Route::get('/questions', [QuestionsController::class, 'index']);
+        Route::get('/signup2', function () {
     return view('signup2');}); 
     Route::post('/signup2', [SignupController::class, 'register']);
     Route::post('/login2', [SignupController::class, 'login']);
     Route::post('/logout', [SignupController::class, 'logout']);
     Route::get('/createQuiz/{create}', [QuestionsController::class, 'createQuiz']);
 Route::get('/userdashboard', [SignupController::class, 'dashboard'])->middleware('auth');
-// Route::get('/art/{post}', [QuestionsController::class, 'showQuiz']);
+ Route::get('/viewquestions/{post}', [QuestionsController::class, 'showQuiz']);
 Route::get('/art', [QuestionsController::class, 'question']);
 Route::post('/quiz/{user}', [QuestionsController::class, 'create']);
 Route::post('/art', [QuestionsController::class, 'mark']);
@@ -39,7 +40,7 @@ Route::get('/profile/{profile:Username}', [UserController::class, 'profile']);
 Route::get('/analytics/{quizs:Username}', [UserController::class, 'analysis']);
 Route::get('/analytics', [UserController::class, 'quiz']);
 Route::get('/category/{category}', [QuestionsController::class, 'quizs']);
- 
+Route::post('/questions', [QuestionsController::class, 'questions']);
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

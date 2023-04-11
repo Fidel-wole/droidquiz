@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('subject');
-            $table->string('topic');
-            $table->longText('questions');
+            $table->string('questions');
             $table->string('option_a');
             $table->string('option_b');
             $table->string('option_c');
             $table->string('option_d');
             $table->string('answer');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('subjectId');
+            $table->foreign('subjectId')->references('id')->on('quiz_topics')->onUpdate('cascade');
             $table->timestamps();
+
         });
     }
 
@@ -34,4 +34,3 @@ return new class extends Migration
         Schema::dropIfExists('questions');
     }
 };
-?>

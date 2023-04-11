@@ -59,18 +59,18 @@
         </div>
         <div class="quizes">
           @foreach($quiz as $quiz)
+          <a href='/viewquestions/{{$quiz->id}}'>
             <div class="quiz-con">
-                <div class="">
-                    <img src="/images/character-avatar-3d-illustration_460336-702.jpg" alt="">
-                </div>
+                
                 
                 <h3>{{$quiz->subject}}</h3>
-                <p>{{$quiz->topic}}</p>
+                <h5>{{$quiz->topics}}</h5>
                 
                 <p>92 Questions</p>
                 <span><ul><p>20 per game</p></ul></span>
                
             </div>
+          </a>
             @endforeach
            
         </div>
@@ -109,7 +109,7 @@ data-spacing="large">
    fill="none" viewBox="0 0 20 20"><path stroke-linecap="round" stroke-linejoin="round" 
    stroke-width="1.25" 
    d="M7.5 10h5M10 18.333A8.333 8.333 0 1 0 1.667 10c0 1.518.406 2.942 1.115 4.167l-.699 3.75 3.75-.699A8.295 8.295 0 0 0 10 18.333Z"/></svg>   
-   <h3 class="summary-item-title">Astrophysis</h3>
+   <br><h3 class="summary-item-title">Astrophysis</h3>
  </div>
  <p class="summary-score"><span>61</span> / 100</p>
 </div>

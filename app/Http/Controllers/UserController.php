@@ -14,7 +14,7 @@ class UserController extends Controller
     }
     public function analysis(User $quizs){
         return view('/analytics', ['quizCount' => $quizs->profile()->count(),
-        'quiz'=>Quiz_topics::where('user_id', auth()->user()->id)->get()]
+        'quiz'=>$quizs->profile()->get()]
     );
     }
 
