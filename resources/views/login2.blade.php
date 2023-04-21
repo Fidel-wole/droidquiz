@@ -32,7 +32,7 @@
            <span>@error('Password'){{$message}}@enderror</span>
            <div class="check">
                 <div class="box">
-                <input type="checkbox">Remember me
+                <input type="checkbox" name="remember_me" value="1">Remember me
                 </div>
                 <p>Forgot password?</p>
             </div>

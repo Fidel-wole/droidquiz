@@ -17,11 +17,11 @@
     <a href="">About us</a>
     <a href="login2" id="log">Log in</a>
     </div>
-    <p onclick="open()" id="open">&#9776;</p>
+ 
    </header>
    <hr>
    <div class="head">
-    <p onclick="close()">&times;</p>
+   
     <div class="links">
     <a href="">How it works</a>
     <a href="">Features</a>

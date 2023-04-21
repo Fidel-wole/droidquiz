@@ -855,10 +855,15 @@ display: none;
   main .my-quizes{
     margin-top: 2.8rem;
   }
+  main .my-quizes .head{
+    margin-bottom: 2rem;
+  }
   main .my-quizes .head input{
     border-radius: var(--border-radius-1);
     background-color: var(--info-light-color);
     padding-left: 1rem;
+    padding: 0.5rem;
+    margin-top: -0.5rem;
   }
   main .my-quizes .quizes{
     margin-top: 1rem;
@@ -885,7 +890,7 @@ box-shadow: none;
     height: 8.5rem;
   }
   main .my-quizes .head .message-count{
-    margin-top: 0.5rem;
+    
     margin-bottom: 0.3rem;
     background-color: var(--danger-color);
 color: var(--white-color);
@@ -978,10 +983,18 @@ box-shadow: var(--box-shadow);
         margin-top: 10px;
         margin-left: 6.5rem;
         width: 90%;
+        background: transparent;
+        border: 1px solid var(--primary-color);
     }
+
     main .quizQuestion label{
         position: absolute;
         margin-top: 2rem;
+    }
+    main .quizQuestion textarea{
+        background: transparent;
+        border: 1px solid var(--primary-color);
+        resize: none;
     }
     main .quizQuestion button{
         background-color: var(--sucess-color);

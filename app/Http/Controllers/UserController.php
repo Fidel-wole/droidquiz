@@ -13,9 +13,14 @@ class UserController extends Controller
         return view ('/profile', ['quizCount' => $profile->profile()->count()]);
     }
     public function analysis(User $quizs){
+        $quiz = $quizs->profile()->latest()->paginate(4);
         return view('/analytics', ['quizCount' => $quizs->profile()->count(),
-        'quiz'=>$quizs->profile()->get()]
+        'quizs'=>$quiz]
     );
     }
 
+    public function search($term){
+        $search = Quiz_topics::search($term)->get();
+        return($search);
+    }
 }

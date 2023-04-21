@@ -18,4 +18,5 @@ themetoggler.addEventListener("click", ()=>{
      themetoggler.querySelector("span:nth-child(1)").classList.toggle('active');
      themetoggler.querySelector("span:nth-child(2)").classList.toggle('active');
     })
-date.value="Happy " +  currentday;    
+date.value="Happy " +  currentday;
+    

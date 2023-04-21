@@ -6,14 +6,17 @@ use App\Models\Quiz_category;
 use Illuminate\Http\Request;
 use App\Models\Quiz_topics;
 use App\Models\User;
-
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 class QuestionsController extends Controller
 {
-     public function showQuiz(Quiz_topics $post){
-        $n = 0;
-        $n++;
+     public function showQuiz(Request $request, Quiz_topics $post){
+        
         $posts =$post->quest()->get();
-        return view('viewquestions', ['post' => $posts, 'incre' => $n]);
+        if($request->ajax()){
+            return response()->json(View::make('viewquestions', ['post' => $posts])->render());
+        }
+        return view('viewquestions', ['post' => $posts]);
         }
 
    
@@ -67,14 +70,18 @@ class QuestionsController extends Controller
             $newQuiz->subjectId =$request['subjectId'];
             $newQuiz->save();
          ;
-       
+       if($newQuiz){
             return response()->json(['success' => ' Sucessfully']);
-         
+       }
         }
     public function mark(Request $request){
+        
+       
+        dd($request);
         return view('/resultSummary');
     
-}
+
+    } 
 public function quizs(Quiz_category $category){
     return view('category', ['category'=>$category]);  
 }
@@ -84,4 +91,18 @@ public function category(){
    public function createQuiz(Quiz_category $create){
     return view('createQuiz', ['quizid' => $create->id]);
    }
+  
+
+//    public function getmorequestions(Request $request)
+// {
+//     $currentPage = $request->page_num;
+//     // Set the paginator to the current page
+//     Paginator::currentPageResolver(function() use ($currentPage) {
+//         return $currentPage;
+//     });
+//     $transactions = DB::table('questions')->paginate(1);
+//     return view("viewquestions", compact("questions"));
+// }
+// }
+
 }

@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile</title>
+ 
   <link href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp')}}"
       rel="stylesheet">
   <link rel="stylesheet" href="{{asset('/dashboard.css')}}">
@@ -52,26 +53,27 @@
           </div>
       </div>
       <div class="my-quizes">
-        <div class="head" style="display:flex; gap:0.5rem;">
-            <h2>My Quizes</h2>
+        <div class="head" style="display:flex; gap:0.5rem; ">
+            <h3>My Quizes</h3>
             <span class="message-count">{{$quizCount}}</span>
             <input type="search" placeholder="Search">
         </div>
         <div class="quizes">
-          @foreach($quiz as $quiz)
+          @foreach($quizs as $quiz)
           <a href='/viewquestions/{{$quiz->id}}'>
             <div class="quiz-con">
                 
                 
                 <h3>{{$quiz->subject}}</h3>
                 <h5>{{$quiz->topics}}</h5>
-                
+                <small>Created at: {{$quiz->created_at->format('d:m:y')}}</small>
                 <p>92 Questions</p>
                 <span><ul><p>20 per game</p></ul></span>
                
             </div>
           </a>
             @endforeach
+            {{$quizs->links()}}
            
         </div>
       </div>

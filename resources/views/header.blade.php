@@ -26,9 +26,11 @@
         <p>Hey, <b>{{auth()->user()->Username}}</p>
         <small class="text-muted">User</small>
       </div>
+      <a href="/profile/{{auth()->user()->Username}}">
       <div class="profile-photo">
         <img src="{{auth()->user()->Avatar ? asset('/storage/image/'.auth()->user()->Avatar) : ('imsges/funny-3d-illustration-american-referee.jpg')}}">
       </div>
+      </a>
     </div>
   </div>
 

@@ -15,9 +15,9 @@
     @include('navbar')
     <main>
         <h2>Create your own quiz</h2>
-        <div id="successMsg" style="background-color: display:none; rgb(17, 231, 160); width:90%; margin-bottom:20px;
-          font-weight:lighter;  padding:12px; color:white;">
-               Quiz Created Sucessfully
+        <div id="successMsg" style=" display: none; background-color:  rgb(17, 231, 160); width:90%; margin-bottom:20px;
+          font-weight:bolder;  padding:12px; color:white;">
+              <p style="color:white"> Quiz Created Sucessfully,proceed</p>
         </div>
        
 
@@ -45,6 +45,7 @@
     <label> Answer</label>
     <input type="text" name="answer" id="answer" placeholder="Answer"><p>
         <span id="answer2" style="color:red"></span>
+      
 <button>Save and add another</button>
 <button type="button" class="but2">Done</button>
 </form>
@@ -80,12 +81,12 @@
                 subjectId:subjectId,
 
             },
-             success:function(response){
-             $('#successMsg').show();
-             console.log(response
-             );
-             
-              },
+             success:setTimeout(function(response){
+            //  alert('Quiz Created Sucessfully, proceed');
+            $('#successMsg').show().fadeout('fast');
+             console.log(response);
+              }, 1000),
+              
               error:function(response){
                 $('#questionErrorMsg').text(response.responseJSON.errors.question);
                 $('#optionA').text(response.responseJSON.errors.option_a);
@@ -96,6 +97,13 @@
               },       
         });
     });
+
+    document.querySelector('.but2').addEventListener('click', ()=>{
+       let confim =  confirm('Are you sure you are done');
+       if(confim == true){
+         window.location.href="{{route('analytics', ['quizs' => Auth::user()->Username])}}";
+       }
+    })
     </script>
 </body>
 

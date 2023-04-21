@@ -19,10 +19,11 @@ class SignupController extends Controller
   public function login(Request $request){
 $incomingFields = $request->validate([
   'email'=>'required|email',
-  'Password'=>'required|'
+  'Password'=>'required|',
 ]);
-if(auth()->attempt(['email' => $incomingFields['email'], 'password' => $incomingFields['Password']])){
-$request->session()->regenerate();
+$remember_me = $request->has('remember_me') ? true : false;
+if(auth()->attempt(['email' => $incomingFields['email'], 'password' => $incomingFields['Password']], $remember_me)){
+  $request->session()->regenerate();
 return redirect('/userdashboard');
 }else{
   return back()->with('fail', "Incorrect Password or Username");
@@ -33,7 +34,7 @@ return redirect('/userdashboard');
            $incomingFields =  $request->validate([
                 'Fullname'=>'required',
                 'email'=>['required', 'email', Rule::unique('users', 'email')],
-                'Username'=>'required',
+                'Username'=>['required', Rule::unique('users', 'Username')],
                 'Password'=>'required|min:8|max:12',
             ]);
             $avatar_name = 'avatar.jpg';
