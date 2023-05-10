@@ -335,14 +335,9 @@ main .insights small{
     padding-top: 10px;
 }
 .quiz > div.quiz-photo span{
-      background-color: var(--sucess-color);
+      background-color: var(--primary-color);
 }
-.quiz > div.quiz-music span {
-background-color: var(--danger-color);
-}
-.quiz-commercial{
-    background-color: var(--warning-color);
-}
+
 
 .lessons{
     margin-top: 1rem;
