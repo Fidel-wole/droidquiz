@@ -7,6 +7,7 @@ use App\Models\Quiz_category;
 use Illuminate\Http\Request;
 use App\Models\Quiz_topics;
 use App\Models\User;
+use Illuminate\Facades\Session;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
@@ -105,11 +106,24 @@ class QuestionsController extends Controller
             $correctAnswer = $question->answer;
 
             if ($userAnswer === $correctAnswer) {
-                return view('resultSummary', ['score' => $score++, 'quizcount' => $questions->count()]);
+               $score++;
             } else {
                 echo $score;
             }
         }
+        $totaQuestions = count($questions);
+        $percentageScore = ($score / $totaQuestions) * 100;
+        \Illuminate\Support\Facades\Session::put('score', $percentageScore);
+        \Illuminate\Support\Facades\Session::put( 'quizCount', $questions->count());
+        return redirect()->route('resultSummary');
+    }
+
+    public function result(){
+        $score = \Illuminate\Support\Facades\Session::get('score');
+        $quizCount = \Illuminate\Support\Facades\Session::get( 'quizCount');
+        \Illuminate\Support\Facades\Session::forget('score');
+        \Illuminate\Support\Facades\Session::forget('quizCount');
+        return view('resultSummary', compact('score', 'quizCount'));
     }
     public function quizs(Quiz_category $category)
     {

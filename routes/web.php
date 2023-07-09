@@ -24,9 +24,7 @@ Route::get('/', function () {
 Route::get('/login2', function () {
     return view('login2');
 });
-Route::get('/resultSummary', function () {
-    return view('/resultSummary');
-});
+
 Route::get('/signup2', function () {
     return view('signup2');
 });
@@ -50,6 +48,7 @@ Route::get('/questions', [QuestionsController::class, 'index']);
 Route::post('/quiz/{user}', [QuestionsController::class, 'create']);
 Route::get('/category/{category}', [QuestionsController::class, 'quizs']);
 Route::post('/submit', [QuestionsController::class, 'mark']);
+Route::get('/resultSummary', [QuestionsController::class, 'result'])->name('resultSummary');
 Route::get('/categories', [QuestionsController::class, 'category'])->name('categories');
 
 

@@ -29,7 +29,7 @@
                 <div class="results grid-flow" data-spacing="large">
 
                     <h1 class="section-title">Your Result</h1>
-                    <p class="result-score"><span>{{$score}}</span> of {{$quizcount}}</p>
+                    <p class="result-score"><span>{{$score}} %</span> of {{$quizCount}} questions</p>
 
                     <div class="grid-flow">
                         <p class="result-rank">Great</p>
