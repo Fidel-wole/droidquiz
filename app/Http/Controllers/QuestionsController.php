@@ -15,13 +15,22 @@ class QuestionsController extends Controller
 {
     public function showQuiz(Request $request, Quiz_topics $post)
     {
-
         $posts = $post->quest()->get();
-        if ($request->ajax()) {
-            return response()->json(View::make('viewquestions', ['post' => $posts])->render());
-        }
-        return view('viewquestions', ['post' => $posts]);
+
+
+        return View('viewquestions', ['post' => $posts])->render();
+
+        // Add the headers
+        // $headers = [
+        //     'Access-Control-Allow-Origin' => '*',
+        //     'Access-Control-Allow-Methods' => 'GET, POST',
+        //     'Access-Control-Allow-Headers' => 'X-Requested-With, Content-Type',
+        // ];
+        // if ($request->ajax()) {
+        //     return response()->json($posts)->withHeaders($headers);
+        // }
     }
+
 
 
     public function create(Request $request, $user)
@@ -80,23 +89,27 @@ class QuestionsController extends Controller
             return response()->json(['message' => $message]);
         }
     }
-    public function mark(Request $request, $id)
+
+    //Questions marker
+    public function mark(Request $request)
     {
-        $item = DB::table('questions')->where('id', $id)->value('name');
-        dump($request);
+        $userAnswers = $request->input('answer');
+        $questionIds = array_keys($userAnswers);
+        $questions = Question::whereIn('id', $questionIds)->get();
+       
+        $score = 0;
 
-        //         $q = Question::get();
-        //       foreach ($q as $key => $value) {
-        //        echo   $r = $value->id;k
-        //         // if($value->id == $request->$r ){
-        //         //    echo $request->$r;
-        //         // }
+        foreach ($questions as $question) {
+            $questionId = $question->id;
+            $userAnswer = $userAnswers[$questionId];
+            $correctAnswer = $question->answer;
 
-        //       }
-        //    // print_r($request);
-        //        // return view('/resultSummary');
-
-
+            if ($userAnswer === $correctAnswer) {
+                return view('resultSummary', ['score' => $score++, 'quizcount' => $questions->count()]);
+            } else {
+                echo $score;
+            }
+        }
     }
     public function quizs(Quiz_category $category)
     {

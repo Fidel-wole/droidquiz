@@ -42,8 +42,9 @@ Route::get('/userdashboard', [SignupController::class, 'dashboard'])->middleware
 
 
 Route::get('/createQuiz/{create}', [QuestionsController::class, 'createQuiz'])->name('categories');
-Route::post('/questions', [QuestionsController::class, 'questions']);
 Route::get('/viewquestions/{post}', [QuestionsController::class, 'showQuiz'])->name('dashboard');
+Route::post('/questions', [QuestionsController::class, 'questions']);
+
 Route::post('/pagination-ajax', [QuestionsController::class, 'getmorequestions']);
 Route::get('/questions', [QuestionsController::class, 'index']);
 Route::post('/quiz/{user}', [QuestionsController::class, 'create']);

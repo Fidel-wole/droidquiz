@@ -53,23 +53,28 @@
                             <span>{{ $item->questions }}</span>
                             <p>
                                 <input type="hidden" name="q" value="{{ $item->id }}">
-                                <input type="radio" id="{{ $item->id }}" name="{{ $item->id }}"
+                                <input type="radio" id="{{ $item->id }}" name="answer[{{ $item->id }}]"
                                     value="{{ $item->option_a }}">{{ $item->option_a }}
                             <p>
-                                <input type="radio" id="{{ $item->id }}" name="{{ $item->id }}"
+                                <input type="radio" id="{{ $item->id }}" name="answer[{{ $item->id }}]"
                                     value="{{ $item->option_b }}">{{ $item->option_b }}
                             <p>
-                                <input type="radio" id="{{ $item->id }}" name="{{ $item->id }}"
+                                <input type="radio" id="{{ $item->id }}" name="answer[{{ $item->id }}]"
                                     value="{{ $item->option_c }}">{{ $item->option_c }}
                             <p>
-                                <input type="radio"id="{{ $item->id }}" name="{{ $item->id }}"
+                                <input type="radio"id="{{ $item->id }}" name="answer[{{ $item->id }}]"
                                     value="{{ $item->option_d }}">{{ $item->option_d }}
                                 <hr>
                         </div>
-                    @endforeach, i
+                    @endforeach
                     <div class="mt-4" id="pagination">
 
                     </div>
+
+                    <div id="question-container">
+
+                    </div>
+
                     <button
                         style="text-align:center; padding:12px; font-size:15px; background-color:#7380ec;width:20%; margin-left:80%;
              color:white; border:none;"
@@ -83,23 +88,74 @@
             @include('header')
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"></script>
-    <script>
-        $(document).ready(function() {
+    <script src="https://cdnjs.cloudfare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
-            $('#pagination').on('click', '.pagination a', function(event) {
-                event.preventDefault();
-                var page = $(this).attr('href');
-
-                $.ajax({
-                    type: 'GET',
-                    url: page,
-                    success: function(data) {
-                        $('#user_table').html(data);
-                    }
-                });
-            });
+    <script type='text/javascript'>
+        $.ajax({
+            url: '/viewquestions/' + post,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                displayQuestion(data);
+                console.log(data);
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+            }
         });
+
+
+        function saveAnswer(questionId, answer) {
+            url: '/save-answer',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                _token: '{{ csrf_token() }}',
+                questionId: questionId,
+                answer: answer
+            },
+            success: function(res) {
+                console.log(res);
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        }
+
+        function displayQuestion(questions) {
+            var container = $('#question-container');
+            container.empty();
+            questions.forEach((question) => {
+                var questionElement = $('<div class="question"></div>');
+                var questionTextElement = $('<h3></h3>').text(question.questions);
+                questionElement.append(questionTextElement);
+
+                var optionsContainer = $('<div class="options-container"></div>');
+                var options = ['option_a', 'option_b', 'option_c', 'option_d'];
+                options.forEach((optionKey) => {
+                    var optionElement = $('<div class="option"></div>');
+                    var labelElement = $('<label></label>').text(question[optionKey]);
+                    var radioElement = $('<input type="radio" name = "' + question.id '">')
+                        .attr('value', question[optionKey])
+                        .change(function() {
+                            question.answer = question[optionKey];
+
+                            updateScore(question.answer, question.correctAnswer);
+
+                            saveAnswer(question.id, question[optionKey], question.correctAnswer);
+
+                        });
+                    optionElement.append(radioElement);
+                    optionElement.append(labelElement);
+                    optionElement.append(optionElement);
+                });
+
+                optionElement.append(optionsContainer);
+
+                container.append(optionElement);
+            });
+
+        }
     </script>
 </body>
 
