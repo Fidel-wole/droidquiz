@@ -37,7 +37,7 @@
     <div class="container">
         @include('navbar')
         <main>
-            <form method="post" action="{{route('submit')}}">
+            <form method="post" action="/submit">
                 @csrf
                 <fieldset>
                     <legend style="text-align:center; font-size:13px; ">

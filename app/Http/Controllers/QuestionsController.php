@@ -7,6 +7,7 @@ use App\Models\Quiz_category;
 use Illuminate\Http\Request;
 use App\Models\Quiz_topics;
 use App\Models\User;
+use App\Models\userAnswers;
 use Illuminate\Facades\Session;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
@@ -99,7 +100,7 @@ class QuestionsController extends Controller
         $questions = Question::whereIn('id', $questionIds)->get();
        
         $score = 0;
-
+        $percentScore = 0;
         foreach ($questions as $question) {
             $questionId = $question->id;
             $userAnswer = $userAnswers[$questionId];
@@ -107,23 +108,35 @@ class QuestionsController extends Controller
 
             if ($userAnswer === $correctAnswer) {
                $score++;
-            } else {
-                echo $score;
+               
             }
+            userAnswers::create([
+                'user_id'=>auth()->id(),
+                'question_id'=>$questionId,
+                'selected_answer' => $userAnswer,
+                'is_correct' => $userAnswer === $correctAnswer,
+            ]);
         }
         $totaQuestions = count($questions);
+        $incorrectAnswer = $totaQuestions -$score;
         $percentageScore = ($score / $totaQuestions) * 100;
-        \Illuminate\Support\Facades\Session::put('score', $percentageScore);
-        \Illuminate\Support\Facades\Session::put( 'quizCount', $questions->count());
+        $roundedScore = round($percentageScore);
+        \Illuminate\Support\Facades\Session::put('Correctscore', $score);
+        \Illuminate\Support\Facades\Session::put('score', $roundedScore);
+        \Illuminate\Support\Facades\Session::put( 'quizCount', $totaQuestions);
+        \Illuminate\Support\Facades\Session::put( 'wrongAnswers', $incorrectAnswer);
+    
         return redirect()->route('resultSummary');
     }
 
     public function result(){
+        $Correctscore = \Illuminate\Support\Facades\Session::get('Correctscore');
         $score = \Illuminate\Support\Facades\Session::get('score');
         $quizCount = \Illuminate\Support\Facades\Session::get( 'quizCount');
-        \Illuminate\Support\Facades\Session::forget('score');
-        \Illuminate\Support\Facades\Session::forget('quizCount');
-        return view('resultSummary', compact('score', 'quizCount'));
+        $wrongAnswers = \Illuminate\Support\Facades\Session::get( 'wrongAnswers');
+        // \Illuminate\Support\Facades\Session::forget('score');
+        // \Illuminate\Support\Facades\Session::forget('quizCount');
+        return view('resultSummary', compact('score', 'quizCount', 'wrongAnswers', 'Correctscore'));
     }
     public function quizs(Quiz_category $category)
     {
