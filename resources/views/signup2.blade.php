@@ -53,12 +53,13 @@
                             {{ $message }}
                         @enderror
                     </span>
-                    <input type="password" name='Password' value="{{ old('Password') }}" placeholder="Password">
+                    <input type="password" name='Password' id="password" value="{{ old('Password') }}" placeholder="Password">
                     <span>
                         @error('Password')
                             {{ $message }}
                         @enderror
                     </span>
+                    <input type="password" name='' id="confirmPassword" placeholder="Confirm Password">
                     <p>Upload Profile picture if available
                     <p>
                         <input type="file" name='avatar'value="{{ old('avatar') }}"><br>
@@ -81,6 +82,13 @@
             </div>
         </form>
     </main>
+    <script>
+        let password = document.getElementById('password').value;
+        let confirmpassword = document.getElementById('confirmPassword').value;
+        if (confirmPassword != password){
+            alert("Password doesn't match");
+        }
+    </script>
 </body>
 
 </html>

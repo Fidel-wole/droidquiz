@@ -54,7 +54,7 @@ Route::get('/categories', [QuestionsController::class, 'category'])->name('categ
 
 Route::get('/profile/{profile:Username}', [UserController::class, 'profile'])->name('profile');
 Route::get('/analytics/{quizs:Username}', [UserController::class, 'analysis'])->name('analytics');
-
+Route::post('/updateProfilePicture', [UserController::class, 'updateProfilePicture'])->name('analytics');
 
 
 // Route::middleware('auth')->group(function () {

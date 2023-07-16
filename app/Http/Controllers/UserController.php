@@ -30,4 +30,20 @@ class UserController extends Controller
         $search = Quiz_topics::search($term)->get();
         return ($search);
     }
+    public function updateProfilePicture(Request $request){
+        $request->validate([
+            'profile_picture'=> 'required|image|mimes:jpeg, png, jpg, gif|max:2048',
+        ]);
+        if ($request->hasFile('profile_picture')) {
+            $destination_path = 'public/image';
+            $avatar = $request->file('profile_picture');
+            $avatar_name = $avatar->getClientOriginalName();
+            $path = $request->file('profile_picture')->storeAs($destination_path, $avatar_name);
+          }
+          $user = auth()->user();
+          $user->avatar= $avatar_name;
+          $user->save();
+
+          return redirect()->back()->with('sucess', 'profile picture updated');
+    }
 }

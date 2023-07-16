@@ -14,15 +14,22 @@
     <div class="container">
         @include('/navbar')
         <main>
+        @if (Session::get('sucess'))
+                        <div
+                            style="background-color:  rgb(17, 231, 160); width:90%; margin-bottom:20px;
+              font-weight:lighter;  padding:12px; color:white;">
+                            {{ Session::get('sucess') }}
+                        </div>
+                    @endif
             <div class="result-summary" style="display: block">
 
                 <div class="results grid-flow" data-spacing="large">
 
                     <h1 class="section-title">Your Profile</h1>
-                    <p class="result-score"><span>76</span> of 1000 Users</p>
+                    <p class="result-score"><img src = "{{ asset('/storage/image/' . auth()->user()->Avatar) }}"></p>
 
                     <div class="grid-flow">
-                        <p class="result-rank">Change Profile Picture</p>
+                        <p class="result-rank" id="change">Change Profile Picture</p>
                         <p></p>
                     </div>
 
@@ -88,7 +95,11 @@
                     <button class="button">Continue</button>
                 </div>
             </div>
-
+           <form action="/updateProfilePicture" method="post" enctype="multipart/form-data" class="pp" id="pp">
+            @csrf
+            <input type = "file" name="profile_picture" placeholder="Insert Image"> 
+            <button>Change</button>
+           </form>
         </main>
         </main>
         <div class="right">
@@ -96,6 +107,14 @@
         </div>
     </div>
     <script src="{{ asset('script.js') }}"></script>
+    <script>
+        let form = document.getElementById('pp');
+        let button = document.getElementById('change');
+        button.addEventListener('click', ()=>{
+            form.style.display = 'block';
+            form.style.scale = 1.1;
+        })
+    </script>
 </body>
 
 </html>
